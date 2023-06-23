@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Job Freak Assignment</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Ysabeau+Office:wght@600&display=swap");
+    </style>
+    <style>
+      body {
+        margin: 2px;
+        padding: 0;
+        font-family: "Ysabeau Office", sans-serif;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+      }
+      #left-panel {
+        width: 20%;
+        height: 99vh;
+        background-color: rgb(167, 167, 167);
+        float: left;
+        border-radius: 5px;
+      }
+
+      #hamburger-icon {
+        display: block;
+        cursor: pointer;
+        margin-right: 25px;
+        padding: 5px;
+      }
+
+      #content {
+        width: 80%;
+        height: 99vh;
+        float: right;
+        padding-left: 20px;
+      }
+
+      .component {
+        padding: 10px;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 3px;
+        margin: 5px;
+      }
+
+      .component:hover {
+        background-color: rgb(114, 114, 114);
+        color: white;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      h2 {
+        font-size: 35px;
+      }
+
+      label,
+      p {
+        font-size: 20px;
+      }
+      input,
+      textarea {
+        font-size: 20px;
+        border-radius: 4px;
+      }
+      .send {
+        color: black;
+        background: rgb(167, 167, 167);
+        border-radius: 3px;
+        border-color: rgb(44, 44, 44);
+        padding: 3px 8px;
+      }
+      .send:hover {
+        background: rgb(114, 114, 114);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="left-panel">
+        <div class="component" onclick="showContent('home')">Home</div>
+        <div class="component" onclick="showContent('contact')">Contact</div>
+        <div class="component" onclick="showContent('information')">Information</div>
+        <div class="component" onclick="showContent('guide')">Guide</div>
+      </div>
+
+      <div id="content">
+        <div id="hamburger-icon" onclick="toggleLeftPanel()">
+          <img src="hamburger.png" alt="Hamburger Icon" width="30" height="30" />
+        </div>
+        <div id="home">
+          <h2>Home</h2>
+          <p>
+            Welcome to the Home page! <br />Click on hamburger icon to close the
+            left-panel. <br />
+            Choose from the options given on the left-panel and enjoy surfing!!
+          </p>
+        </div>
+        <div id="contact" class="hidden">
+          <h2>Contact</h2>
+          <section>
+            <form>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" style="margin-left: 35px" required/>
+              <br /><br />
+
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" style="margin-left: 38px" required/>
+              <br /><br />
+
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" rows="1" cols="21" style="margin-left: 15px" required ></textarea>
+              <br /><br />
+
+              <input type="submit" value="Send" class="send" />
+            </form>
+          </section>
+        </div>
+        <div id="information" class="hidden">
+          <h2>Information</h2>
+          <p>HTML (Hypertext Markup Language):</p>
+
+          <ul>
+            <li>
+              HTML is the standard markup language used for creating the
+              structure and content of webpages.
+            </li>
+            <li>
+              HTML consists of a series of elements (tags) that define the
+              different parts of a webpage.
+            </li>
+            <li>
+              HTML elements are represented by opening and closing tags, and
+              they can contain content or other nested elements.
+            </li>
+          </ul>
+          <p>CSS (Cascading Style Sheets):</p>
+          <ul>
+            <li>
+              CSS is a stylesheet language used for describing the presentation
+              and visual styles of HTML elements.
+            </li>
+            <li>
+              CSS allows you to control the layout, colors, fonts, sizes, and
+              other visual aspects of a webpage.
+            </li>
+            <li>
+              CSS operates by applying rules to target specific HTML elements
+              and specifying the desired styles and properties for those
+              elements.
+            </li>
+          </ul>
+        </div>
+        <div id="guide" class="hidden">
+          <h2>Guide</h2>
+          <p>Step-by-step guide will be shown here.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showContent(component) {
+        var contentDivs = document.querySelectorAll("#content > div");
+        contentDivs.forEach(function (div) {
+          div.classList.add("hidden");
+        });
+
+        var selectedDiv = document.getElementById(component);
+        selectedDiv.classList.remove("hidden");
+      }
+
+      function toggleLeftPanel() {
+        var leftPanel = document.getElementById("left-panel");
+        if (leftPanel.style.display === "none") {
+          leftPanel.style.display = "block";
+        } else {
+          leftPanel.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
